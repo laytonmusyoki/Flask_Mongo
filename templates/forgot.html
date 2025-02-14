@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forgot</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+    <div class="account-container">
+        <form action="" method="POST">
+            <div class="register-box">
+                <h3>Request Reset Link !!</h3>
+                <div class="input-wrapper">
+                    <label for="">Email</label>
+                    <input type="text" name="email" value="{{ email }}" placeholder="Enter your email">
+                </div>
+                <div class="input-wrapper">
+                    <button>Request Reset Link</button>
+                </div>
+                <p>Go Back to <a href="{{ url_for('login') }}">login</a></p>
+            </div>
+        </form>
+    </div>
+
+    {% include 'flash.html' %}
+</body>
+</html>

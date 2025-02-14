@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+    <div class="account-container">
+        <form action="" method="POST">
+            <div class="register-box">
+                <h3>Reset Your Password !!</h3>
+                <div class="input-wrapper">
+                    <label for="">New Password</label>
+                    <input type="password" name="password" value="{{ password }}" placeholder="Enter your new password">
+                </div>
+                <div class="input-wrapper">
+                    <label for="">Confirm Password</label>
+                    <input type="password" name="confirm_password" value="{{ confirm_password }}" placeholder="Confirm your new password">
+                </div>
+                <div class="input-wrapper">
+                    <button>Reset Password</button>
+                </div>
+                <p>Go Back to <a href="{{ url_for('login') }}">login</a></p>
+            </div>
+        </form>
+    </div>
+
+    {% include 'flash.html' %}
+</body>
+</html>

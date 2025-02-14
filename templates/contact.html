@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+
+
+{% block body %}
+
+<h2>Contact Form</h2>
+<div class="contact-form">
+    <form action="" method="POST">
+        <div class="row">
+            <div class="col-lg-6">
+                <label for="">Mobile phone number</label>
+                <input type="text" name="phone" placeholder="Enter Your Phone Number" value="{{ existing_contact['phone'] }}">
+            </div>
+            <div class="col-lg-6">
+                <label for="">Email</label>
+                <input type="text" name="email" placeholder="Enter Your Email" value="{{ existing_contact['email'] }}">
+            </div>
+            <div class="col-lg-6">
+                <label for="">Address</label>
+                <input type="text" name="address" placeholder="Enter Your Address" value="{{ existing_contact['address'] }}">
+            </div>
+            <div class="col-lg-6">
+                <label for="">Registration number</label>
+                <input type="text" name="reg_no" placeholder="Enter Your Registration number" value="{{ existing_contact['reg_no'] }}">
+            </div>
+            <div class="col-lg-6">
+                {% if existing_contact %}
+                <button type="submit">Update</button>
+                {% else %}
+                <button type="submit">Submit</button>
+                {% endif %}
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

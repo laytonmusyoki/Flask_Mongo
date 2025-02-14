@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+    <section class="home">
+        <div class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h2>Flask App</h2>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="{{ url_for('home') }}" style="color: #000;">Welcome,{{ session['username'] }}!</a></li>
+                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="sidebar">
+                <ul>
+                    {% if session['role'] =="user" %}
+                    <li><a href="{{ url_for('contact') }}">Contact Details</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('admin') }}">All contacts</a></li>
+                    {% endif %}
+                    
+                </ul>
+            </div>
+            <div class="main">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
+    </section>
+
+    {% include 'flash.html' %}
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

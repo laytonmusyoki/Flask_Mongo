@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+    <div class="account-container">
+        <form action="" method="POST">
+            <div class="register-box">
+                <h3>CREATE YOUR ACCOUNT</h3>
+                
+                <div class="input-wrapper">
+                    <label for="">Username</label>
+                    <input type="text" name="username" value="{{ username }}" placeholder="Enter your username">
+                </div>
+                <div class="input-wrapper">
+                    <label for="">Email</label>
+                    <input type="text" name="email" value="{{ email }}" placeholder="Enter your email">
+                </div>
+                <div class="input-wrapper">
+                    <label for="">Password</label>
+                    <input type="password" name="password" value="{{ password }}" placeholder="Enter your password">
+                </div>
+                <div class="input-wrapper">
+                    <label for="">Confirm Password</label>
+                    <input type="password" name="confirm_password" value="{{ confirm_password }}" placeholder="Confirm your password">
+                </div>
+                <div class="input-wrapper">
+                    <button type="submit">Register</button>
+                </div>
+                <p>Already have an account ? <a href="{{ url_for('login') }}">Login</a></p>
+            </div>
+        </form>
+    </div>
+
+    {% include 'flash.html' %}
+</body>
+</html>

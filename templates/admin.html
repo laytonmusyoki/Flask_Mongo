@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+
+
+{% block body %}
+<h2>All Students Contacts</h2>
+<div class="search">
+    <input type="search" id="search" placeholder="Search by Registration Number">
+    <button>Search</button>
+</div>
+<table>
+    <thead>
+        <th>Reg_no</th>
+        <th>phone</th>
+        <th>Email</th>
+        <th>Address</th>
+    </thead>
+    <tbody>
+        {% for contact in contacts %}
+        <tr class="contact-info" data-reg_no="{{ contact.reg_no }}">
+            <td>{{ contact.reg_no }}</td>
+            <td>{{ contact.phone }}</td>
+            <td>{{ contact.email }}</td>
+            <td>{{ contact.address }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}
