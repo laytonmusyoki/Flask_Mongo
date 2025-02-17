@@ -24,7 +24,7 @@ app.config['MAIL_PASSWORD'] = 'qamfnggyldkpbhje'
 mail = Mail(app)
 
 
-@app.route('/')
+@app.route('/home')
 def home():
     return render_template('index.html')
 
@@ -59,9 +59,9 @@ def register():
             flash("Password must contain special characters!",'error')
             return render_template('register.html',username=username,email=email,password=password,confirm_password=confirm_password)
         else:
-            user = mongo.db.users.find_one({"email":email})
+            user = mongo.db.users.find_one({"username":username})
             if user:
-                flash('Email already exist','error')
+                flash('User with that username already exist','error')
                 return render_template('register.html',username=username,email=email,password=password,confirm_password=confirm_password)
             else:
                 hashed_password=bcrypt.hashpw(password.encode('utf-8'),bcrypt.gensalt())
@@ -72,7 +72,7 @@ def register():
 
 
 # login route
-@app.route('/login',methods=['POST','GET'])
+@app.route('/',methods=['POST','GET'])
 def login():
     if 'user_id' in session:
         flash("You are already logged in","error")
@@ -237,3 +237,5 @@ def logout():
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
+    
